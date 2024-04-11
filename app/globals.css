@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    transparent,
+    rgb(235, 76, 227),
+    rgb(229, 146, 240)
+  );
+  border-radius: 1px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    transparent,
+    rgb(238, 63, 238),
+    rgb(210, 126, 243)
+  );
+  border-radius: 1px;
+}
+
+#loginForm {
+  display: none;
+}
+
+.registerForm {
+  display: block;
+}

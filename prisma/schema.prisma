@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+// prisma migrate dev --- run this to termimal for new migration
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Login {
+  id String @id @default(uuid())
+  username String @unique
+  firstname String
+  lastname String
+  middlename String
+  sex String
+  contact String
+  birthdate String
+  address String
+  email String @unique
+  password String
+  confirm_password String
+}
+
+model Invoice {
+  id String @id @default(uuid())
+  c_name String
+  amount String
+  date DateTime @default(now())
+}
+
