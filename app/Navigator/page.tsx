@@ -20,7 +20,7 @@ const page = () => {
             className="text-lg hover:scale-125 hover:text-pink-500 duration-300"
             href="/"
           >
-            Home
+            Business
           </Link>
 
           <Link
