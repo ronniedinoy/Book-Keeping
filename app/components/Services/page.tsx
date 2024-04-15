@@ -15,47 +15,40 @@ const page = () => {
       <h1 className="md:text-center md:text-6xl ml-10 text-left text-2xl text-gray-500 mb-5">
         Service Offer
       </h1>
-      <div className="grid md:grid-cols-3 grid-cols-1 ml-10 mr-10 text-6xl text-pink-300 gap-5 text-center justify-evenly">
+      <div className="grid md:grid-cols-4 grid-cols-2 mx-10 text-6xl gap-3">
         <Image
           src={massage1}
-          alt="spa2"
-          className="flex rounded-xl hover:scale-95 hover:border-4 hover:border-pink-600 duration-200 w-96 h-52"
+          alt="massage1"
+          className="rounded-xl md:scale-100 hover:scale-95 duration-200 w-96 h-52 shadow-md hover:shadow-white"
         />
         <Image
           src={massage2}
           alt="spa2"
-          className="flex rounded-xl hover:scale-95 hover:border-4 hover:border-pink-600 duration-200 w-96 h-52"
-        />
+          className="rounded-xl md:scale-100 hover:scale-95 duration-200 w-96 h-52 shadow-md hover:shadow-white"        />
         <Image
           src={haircut1}
           alt="spa2"
-          className="flex rounded-xl hover:scale-95 hover:border-4 hover:border-pink-600 duration-200 w-96 h-52"
-        />
+          className="rounded-xl md:scale-100 hover:scale-95 duration-200 w-96 h-52 shadow-md hover:shadow-white"        />
         <Image
           src={haircut2}
           alt="spa2"
-          className="flex rounded-xl hover:scale-95 hover:border-4 hover:border-pink-600 duration-200 w-96 h-52"
-        />
+          className="rounded-xl md:scale-100 hover:scale-95 duration-200 w-96 h-52 shadow-md hover:shadow-white"        />
         <Image
           src={manicure1}
           alt="spa2"
-          className="flex rounded-xl hover:scale-95 hover:border-4 hover:border-pink-600 duration-200 w-96 h-52"
-        />
+          className="rounded-xl md:scale-100 hover:scale-95 duration-200 w-96 h-52 shadow-md hover:shadow-white"        />
         <Image
           src={manicure2}
           alt="spa2"
-          className="flex rounded-xl hover:scale-95 hover:border-4 hover:border-pink-600 duration-200 w-96 h-52"
-        />
+          className="rounded-xl md:scale-100 hover:scale-95 duration-200 w-96 h-52 shadow-md hover:shadow-white"        />
         <Image
           src={pedicure1}
           alt="spa2"
-          className="flex rounded-xl hover:scale-95 hover:border-4 hover:border-pink-600 duration-200 w-96 h-52"
-        />
+          className="rounded-xl md:scale-100 hover:scale-95 duration-200 w-96 h-52 shadow-md hover:shadow-white"        />
         <Image
           src={pedicure2}
           alt="spa2"
-          className="flex rounded-xl hover:scale-95 hover:border-4 hover:border-pink-600 duration-200 w-96 h-52"
-        />
+          className="rounded-xl md:scale-100 hover:scale-95 duration-200 w-96 h-52 shadow-md hover:shadow-white"        />
       </div>
     </div>
   );

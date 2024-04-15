@@ -9,8 +9,8 @@ export default function Home() {
         <div className="text-4xl text-[#57bdf8] font-[chilanka] text-center">
           OnGoing{" "}
           <span className="text-cyan-600 font-[purisa]">Application</span>
-          <div className="md:flex items-center justify-center overflow-hidden">
-            <Image src={spa5} alt="spa5" width={600} className="rounded-3xl flex m-auto hover:scale-95 duration-300 border-2 shadow-2xl shadow-black" />
+          <div className="md:flex mx-5 items-center justify-center">
+            <Image src={spa5} alt="spa5" width={600} className="shadow-2xl shadow-black rounded-3xl bg-black/80" />
           </div>
         </div>
       </div>

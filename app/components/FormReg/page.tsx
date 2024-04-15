@@ -51,7 +51,8 @@ const page = () => {
   function validateForm(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
     const inputUserEmail = formValue.username && formValue.email;
-    const isEqualPassword = formValue.password === formValue.confirm_password;
+    const isEqualPassword =
+      formValue.password.length === formValue.confirm_password.length;
 
     if (isEqualPassword && inputUserEmail) {
       registerForm({ preventDefault: () => {} });
@@ -61,25 +62,30 @@ const page = () => {
   }
 
   const registerForm = (data: any) => {
+    data.preventDefault();
     try {
-      data.preventDefault();
       fetch("/API/signForm", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
-      })
-        .then((data) => data.json())
-        .then(() => {
-          // router.push("/components/ConfirmReg/RecordExist");
-        });
+        next: {
+          revalidate: 0,
+        },
+        body: JSON.stringify(formValue),
+      }).then((data) => data.json());
+      console.log("Record Added", data);
+      // router.push("/components/ConfirmReg");
     } catch (error) {
-      router.push("/components/ErrorReg");
+      console.log("Record Exist", data, formValue);
       return Response.json({ message: "Error", error }, { status: 500 });
     }
   };
+
+  function confirmStatus() {
+    document.getElementById("status").style.color='black'
+  }
 
   return (
     <div className="flex flex-col bg-pink-900/50 p-10 pt-5 rounded">
@@ -136,16 +142,26 @@ const page = () => {
           className="bg-white/5 duration-300 hover:scale-105 hover:bg-pink-600 w-60 max-h-80 m-auto p-3 rounded-xl shadow-md shadow-black text-center text-sm"
         />
 
-        <div className="bg-white/5 flex justify-center duration-300 hover:scale-105 hover:bg-pink-600 w-60 max-h-80  p-3 rounded-xl shadow-md shadow-black text-sm gap-10">
-          <div>
-            <input type="radio" name="sex" value={(formValue.sex = "male")} />
-            <span>Male</span>
-
-            <input type="radio" name="sex" value={(formValue.sex = "Female")} />
-            <span>Female</span>
+        <div className="flex justify-evenly">
+          <div
+            onClick={() => {
+              (formValue.sex = "male"), confirmStatus();
+            }}
+            id="status"
+            className="status duration-300 hover:scale-105 hover:bg-pink-600 w-28 h-10 p-3 text-center rounded-xl shadow-md shadow-black text-sm"
+          >
+            Male
+          </div>
+          <div
+            onClick={() => {
+              (formValue.sex = "female"), confirmStatus();
+            }}
+            id="status"
+            className="status duration-300 hover:scale-105 hover:bg-pink-600 w-28 h-10 p-3 text-center rounded-xl shadow-md shadow-black text-sm"
+          >
+            Female
           </div>
         </div>
-
         <button
           type="submit"
           onClick={(e) => validateForm(e)}

@@ -44,15 +44,16 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const requestData = await request.json();
-  const responseData = await prisma.login.create({
-    data: requestData,
-  });
-  if (requestData === responseData.username) {
-    console.log("Username Existed");
-    return NextResponse.json(responseData);
-  } else {
-    console.log("request FORM", requestData.username, requestData.email);
-    console.log("response FORM", responseData.username, requestData.email);
+  try {
+    const responseData = await prisma.login.create({
+      data: requestData,
+    });
+    if (requestData !== responseData) {
+      console.log("Registration Complete");
+      return NextResponse.json(responseData);
+    }
+  } catch (error) {
+    console.log("Username or email is use");
+    return NextResponse.json(requestData);
   }
-  return NextResponse.json(responseData);
 }

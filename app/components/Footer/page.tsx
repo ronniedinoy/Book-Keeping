@@ -17,7 +17,8 @@ const DateString = ShowDate.toDateString();
 
 const page = () => {
   return (
-    <div>
+    <div className="flex justify-between mx-5 text-white/50">
+      <h3>Version 1.0</h3>
       <h3>{DateString}</h3>
     </div>
   );

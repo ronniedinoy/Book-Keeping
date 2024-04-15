@@ -27,7 +27,7 @@ export default function RootLayout({
           {children}
         </div>
 
-        <div className="flex h-10 justify-end items-center pr-5 bg-[#251925] text-gray-500">
+        <div className="bg-[#251925] text-gray-500 sticky py-2">
           <Footer />
         </div>
       </body>
