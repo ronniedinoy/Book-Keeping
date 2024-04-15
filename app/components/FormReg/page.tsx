@@ -84,7 +84,7 @@ const page = () => {
   };
 
   function confirmStatus() {
-    document.getElementById("status").style.color='black'
+    // document.getElementById("status")?.style.color='black' //not working
   }
 
   return (
