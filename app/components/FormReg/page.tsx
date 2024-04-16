@@ -1,6 +1,5 @@
 "use client";
 "use strict";
-
 import React, { use, useEffect } from "react";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -36,7 +35,7 @@ const Initial: data = {
 
 const page = () => {
   const [formValue, setFormValue] = useState(Initial);
-  const [isValidForm, setIsValidForm] = useState(false);
+  const [color, isColor] = useState("gray-900");
   const router = useRouter();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -53,8 +52,9 @@ const page = () => {
     const inputUserEmail = formValue.username && formValue.email;
     const isEqualPassword =
       formValue.password.length === formValue.confirm_password.length;
+    const confirmPassword = formValue.password && formValue.confirm_password;
 
-    if (isEqualPassword && inputUserEmail) {
+    if (isEqualPassword && inputUserEmail && confirmPassword) {
       registerForm({ preventDefault: () => {} });
     } else {
       router.push("/components/ErrorReg");
@@ -83,10 +83,6 @@ const page = () => {
     }
   };
 
-  function confirmStatus() {
-    // document.getElementById("status")?.style.color='black' //not working
-  }
-
   return (
     <div className="flex flex-col bg-pink-900/50 p-10 pt-5 rounded">
       <h1 id="register" className="text-3xl text-pink-500 text-justify mb-5">
@@ -94,7 +90,7 @@ const page = () => {
       </h1>
       <form
         name="sign-up"
-        method="post"
+        method="POST"
         autoComplete="off"
         className="text-white flex flex-col gap-y-3"
       >
@@ -142,26 +138,29 @@ const page = () => {
           className="bg-white/5 duration-300 hover:scale-105 hover:bg-pink-600 w-60 max-h-80 m-auto p-3 rounded-xl shadow-md shadow-black text-center text-sm"
         />
 
-        <div className="flex justify-evenly">
-          <div
-            onClick={() => {
-              (formValue.sex = "male"), confirmStatus();
-            }}
-            id="status"
-            className="status duration-300 hover:scale-105 hover:bg-pink-600 w-28 h-10 p-3 text-center rounded-xl shadow-md shadow-black text-sm"
-          >
-            Male
-          </div>
-          <div
-            onClick={() => {
-              (formValue.sex = "female"), confirmStatus();
-            }}
-            id="status"
-            className="status duration-300 hover:scale-105 hover:bg-pink-600 w-28 h-10 p-3 text-center rounded-xl shadow-md shadow-black text-sm"
-          >
-            Female
+        <div className="">
+          <div className="flex justify-evenly">
+            <div
+              style={{ color }}
+              onClick={() => {
+                (formValue.sex = "Male"), isColor("white");
+              }}
+              className="statusMale duration-300 hover:scale-105 hover:bg-pink-600 w-28 h-10 p-3 text-gray-700 text-center rounded-xl shadow-md shadow-black text-sm"
+            >
+              Male
+            </div>
+            <div
+              style={{ color }}
+              onClick={() => {
+                (formValue.sex = "Female"), isColor("white");
+              }}
+              className="statusFemale duration-300 hover:scale-105 hover:bg-pink-600 w-28 h-10 p-3 text-gray-700 text-center rounded-xl shadow-md shadow-black text-sm"
+            >
+              Female
+            </div>
           </div>
         </div>
+
         <button
           type="submit"
           onClick={(e) => validateForm(e)}

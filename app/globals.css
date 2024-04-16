@@ -22,10 +22,3 @@
   border-radius: 1px;
 }
 
-#loginForm {
-  display: none;
-}
-
-.registerForm {
-  display: block;
-}
