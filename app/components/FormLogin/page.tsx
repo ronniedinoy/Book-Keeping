@@ -90,11 +90,10 @@ const page = () => {
 
   return (
     <>
-      <div className="bg-pink-900/50 opacity-1 scale-[99%] hover:scale-[100%] duration-300 rounded-xl text-4xl text-white h-96 flex flex-col justify-center items-center">
+      <div className="bg-pink-900/50 md:mt-10 mt-28 scale-[99%] hover:scale-[100%] duration-300 rounded-xl text-4xl text-white h-96 flex flex-col justify-center items-center">
         <h1 className=" flex justify-center items-center animate-pulse p-5">
           LOGIN
         </h1>
-        <a id="loginForm">Success!</a>
         <div className="h-96 w-80 flex items-center justify-center">
           <form className="flex flex-col">
             <input

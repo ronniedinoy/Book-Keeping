@@ -12,10 +12,11 @@ import pedicure2 from "@/public/pedicure2.jpeg";
 const page = () => {
   return (
     <div className="flex flex-col">
-      <h1 className="md:text-center md:text-6xl ml-10 text-left text-2xl text-gray-500 mb-5">
+      <h1 className="md:mt-1 mt-32 md:text-center md:text-4xl ml-10 text-left text-2xl text-gray-500 mb-5">
         Service Offer
       </h1>
-      <div className="grid md:grid-cols-4 grid-cols-2 mx-10 text-6xl gap-3">
+      <form className="md:w-svw w-96 h-96 overflow-auto">
+      <div className="grid md:grid-cols-4 grid-cols-1 mx-10 text-6xl gap-3">
         <Image
           src={massage1}
           alt="massage1"
@@ -50,6 +51,7 @@ const page = () => {
           alt="spa2"
           className="rounded-xl md:scale-100 hover:scale-95 duration-200 w-96 h-52 shadow-md hover:shadow-white"        />
       </div>
+      </form>
     </div>
   );
 };

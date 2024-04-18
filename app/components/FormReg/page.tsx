@@ -3,6 +3,7 @@
 import React, { use, useEffect } from "react";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { formatWithOptions } from "util";
 
 interface data {
   id?: string;
@@ -35,8 +36,14 @@ const Initial: data = {
 
 const page = () => {
   const [formValue, setFormValue] = useState(Initial);
-  const [color, isColor] = useState("gray-900");
+  const [color, isColor] = useState("gray");
   const router = useRouter();
+
+  const [value, setValue] = useState("Male");
+  const sex = [
+    { label: "MALE", value: formValue.sex = "Male" },
+    { label: "FEMALE", value: formValue.sex = "Female" },
+  ];
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormValue((prevState) => {
@@ -54,7 +61,12 @@ const page = () => {
       formValue.password.length === formValue.confirm_password.length;
     const confirmPassword = formValue.password && formValue.confirm_password;
 
-    if (isEqualPassword && inputUserEmail && confirmPassword) {
+    if (
+      isEqualPassword &&
+      inputUserEmail &&
+      confirmPassword &&
+      formValue.sex.length
+    ) {
       registerForm({ preventDefault: () => {} });
     } else {
       router.push("/components/ErrorReg");
@@ -83,8 +95,12 @@ const page = () => {
     }
   };
 
+  function handleSelect(event: any) {
+    setValue(event.target.value);
+  }
+
   return (
-    <div className="flex flex-col bg-pink-900/50 p-10 pt-5 rounded">
+    <div className="flex flex-col bg-pink-900/50 md:mt-1 mt-32 p-10 pt-5 rounded">
       <h1 id="register" className="text-3xl text-pink-500 text-justify mb-5">
         Registration
       </h1>
@@ -138,28 +154,36 @@ const page = () => {
           className="bg-white/5 duration-300 hover:scale-105 hover:bg-pink-600 w-60 max-h-80 m-auto p-3 rounded-xl shadow-md shadow-black text-center text-sm"
         />
 
-        <div className="">
-          <div className="flex justify-evenly">
-            <div
-              style={{ color }}
-              onClick={() => {
-                (formValue.sex = "Male"), isColor("white");
-              }}
-              className="statusMale duration-300 hover:scale-105 hover:bg-pink-600 w-28 h-10 p-3 text-gray-700 text-center rounded-xl shadow-md shadow-black text-sm"
-            >
-              Male
-            </div>
-            <div
-              style={{ color }}
-              onClick={() => {
-                (formValue.sex = "Female"), isColor("white");
-              }}
-              className="statusFemale duration-300 hover:scale-105 hover:bg-pink-600 w-28 h-10 p-3 text-gray-700 text-center rounded-xl shadow-md shadow-black text-sm"
-            >
-              Female
-            </div>
-          </div>
+        <div>
+          <select
+            onChange={handleSelect}
+            className="bg-white/5 duration-300 hover:scale-105 hover:bg-pink-600 w-60 max-h-80 m-auto p-3 rounded-xl shadow-md shadow-black text-white text-center text-sm"
+          >
+            {sex.map((sexMF) => (
+              <option value={(sexMF.value)} className="text-gray-700 bg-blue-500 text-sm">{sexMF.label}</option>
+            ))}
+          </select>
+          <p className="opacity-0">{(formValue.sex = value)}</p>
         </div>
+
+        {/* <div
+            style={{ color }}
+            onClick={() => {
+              (formValue.sex = "Male"), isColor("black");
+            }}
+            className={`duration-300 hover:cursor-cell hover:bg-pink-600 hover:scale-105 w-28 h-10 px-1 py-3 text-center rounded-xl shadow-md shadow-black text-sm`}
+          >
+            Male
+          </div>
+          <div
+            style={{ color }}
+            onClick={() => {
+              (formValue.sex = "Female"), isColor("yellow");
+            }}
+            className={`duration-300 hover:cursor-cell hover:bg-pink-600 hover:scale-105 w-28 h-10 px-1 py-3 text-center rounded-xl shadow-md shadow-black text-sm`}
+          >
+            Female
+          </div> */}
 
         <button
           type="submit"
