@@ -18,7 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex flex-col bg-[#20131d] min-h-screen">
+      {/* <body className="flex flex-col bg-[#20131d] min-h-screen"> */}
+      <body className="flex flex-col bg-[#49998B] min-h-screen">
         <div>
           <Navigator />
         </div>
@@ -27,7 +28,7 @@ export default function RootLayout({
           {children}
         </div>
 
-        <div className="bg-[#251925] text-gray-500 sticky py-2">
+        <div className="bg-[#157767] text-gray-500 sticky py-2">
           <Footer />
         </div>
       </body>

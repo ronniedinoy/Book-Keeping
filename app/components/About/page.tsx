@@ -5,23 +5,23 @@ import spa2 from "@/public/spa_image1.jpg";
 const page = () => {
   return (
     <>
-      <form className="md:w-svw w-96 h-96 overflow-auto mt-8">
+      <form className="md:w-svw w-svw h-96 overflow-auto mt-8">
         <div className="grid md:grid-cols-2 grid-cols-1 md:mt-1 mt-10">
           <div className="mx-10">
             <Image
               src={spa2}
               alt="spa2"
               width={600}
-              className="shadow-2xl animate-pulse shadow-black rounded-3xl"
+              className="shadow-2xl shadow-black rounded-3xl"
             />
           </div>
 
           <div>
-            <h1 className="md:text-6xl text-3xl md:text-left text-left ml-5 md:mt-10 mt-1 mb-1">
+            <h1 className="md:text-6xl text-3xl text-white/80 md:text-left text-left ml-5 sm:mt-10 md:mt-2 mt-6 mb-3">
               About Us
             </h1>
 
-            <div className="md:text-center text-left text-gray-500 text-sm flex flex-col gap-5 font-[purisa] mx-10">
+            <div className="md:text-justify text-justify text-gray-900 text-sm flex flex-col gap-5 font-[chilanka] mx-10">
               <div>
                 <span>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet

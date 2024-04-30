@@ -1,7 +1,6 @@
 "use client";
 "use strict";
 
-import Link from "next/link";
 import React from "react";
 import { ChangeEvent, useState } from "react";
 import { NextResponse } from "next/server";
@@ -59,16 +58,22 @@ const page = () => {
         body: JSON.stringify(data),
         cache: "no-store",
       })
-        .then((data) => {
-          console.log(data)
-          router.push("/components/ErrorLogin/NoRecord");
-          return data.json();
-        })
-        .then((res) => {
-          console.log(res)
+        .then((data) => data.json())
+        .then(() => {
+          console.log("Existed");
           router.push("/components/ConfirmLogin");
+          return NextResponse.json({ messege: "Existed" }, { status: 200 });
+        })
+        .catch((error) => {
+          console.log("Not Found");
+          router.push("/components/ErrorLogin/NoRecord");
+          return NextResponse.json(
+            { messege: "Not Found", error },
+            { status: 404 }
+          );
         });
     } catch (error) {
+      console.log("Error Found");
       return NextResponse.json({ message: "Error", error }, { status: 500 });
     }
   };
@@ -90,6 +95,50 @@ const page = () => {
 
   return (
     <>
+      <form className="md:mt-1 sm:w-[350px] md:w-[350px] w-[300px] sm:h-[350px] md:h-[350px] h-[350px] mt-36 border rounded-[10px] text-[#767676] bg-[#FFFFFF]">
+        <label className="flex flex-col mt-16 ">
+          <div className="sm:ml-8 md:ml-12 ml-6">Email</div>
+          <input
+            type="text"
+            name="username"
+            autoComplete="off"
+            value={formValue.username || formValue.email}
+            onChange={handleInputChange}
+            className="border-2 border-gray-200 rounded-[10px] h-[40px] w-[250px] mx-auto text-justify p-3"
+          />
+        </label>
+
+        <label className="flex flex-col mt-5 ">
+          <div className="sm:ml-8 md:ml-12 ml-6">Password</div>
+          <input
+            type="password"
+            name="password"
+            autoComplete="off"
+            value={formValue.password}
+            onChange={handleInputChange}
+            className="border-2 border-gray-200 rounded-[10px] h-[40px] w-[250px] mx-auto text-justify p-3"
+          />
+        </label>
+
+        <div
+          onClick={() => validateLogin()}
+          className="text-white mt-10 mx-auto bg-[#49998B] rounded-[10px] flex justify-center items-center w-[150px] h-[40px] duration-100 hover:active:scale-95 hover:active:bg-cyan-400 hover:active:text-gray-500 cursor-pointer"
+        >
+          <div>Login</div>
+        </div>
+
+        <h1 className="mt-16 text-center text-white">
+          No account yet? Register{" "}
+          <a
+            className="text-blue-900 cursor-pointer"
+            href="/components/FormReg"
+          >
+            here
+          </a>
+        </h1>
+      </form>
+
+      {/* 
       <div className="bg-pink-900/50 md:mt-10 mt-28 scale-[99%] hover:scale-[100%] duration-300 rounded-xl text-4xl text-white h-96 flex flex-col justify-center items-center">
         <h1 className=" flex justify-center items-center animate-pulse p-5">
           LOGIN
@@ -117,7 +166,7 @@ const page = () => {
             />
             <div
               onClick={() => validateLogin()}
-              className="rounded-lg duration-200 bg-pink-600 hover:bg-pink-800 shadow-md shadow-black hover:cursor-pointer hover:scale-95 w-60 mt-10 p-2 text-lg flex justify-center"
+              className="rounded-lg duration-200 bg-pink-600 hover:bg-pink-800 hover:active:scale-95 shadow-md hover:shadow-white shadow-black hover:cursor-pointer w-60 mt-10 p-2 text-lg flex justify-center"
             >
               SUBMIT
             </div>
@@ -125,14 +174,14 @@ const page = () => {
             <div>
               <Link
                 href="/components/FormReg"
-                className="w-20 text-lg duration-300 text-gray-500 hover:text-gray-300 hover:scale-110 flex justify-right mt-2"
+                className="w-20 text-lg duration-300 text-gray-500 hover:text-gray-300  hover:active:scale-95 flex justify-right mt-2"
               >
                 Sign In
               </Link>
             </div>
           </form>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

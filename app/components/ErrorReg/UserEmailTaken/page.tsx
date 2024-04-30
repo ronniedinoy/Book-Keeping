@@ -9,7 +9,7 @@ const page = () => {
       className="border px-5 py-2 text-4xl bg-red-900 rounded-2xl text-white hover:scale-125 duration-300"
       href="/components/FormReg"
     >
-      Username is Taken
+      Data Exist!
     </Link>
   );
 };
